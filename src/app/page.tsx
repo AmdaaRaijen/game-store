@@ -1,4 +1,5 @@
 import ImageCarousel from "@/components/organism/Carousel";
+import Link from "next/link";
 
 const images = [
   "https://picsum.photos/1200/600.webp?random=1",
@@ -28,7 +29,10 @@ export default function Home() {
             <h2 className="font-light text-4xl tracking-wider">Game List</h2>
           </div>
           <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 pt-3 w-full">
-            <div className="relative w-full md:min-w-60 md:w-full h-36 md:h-64 overflow-hidden rounded-lg group game-card shadow-inner shadow-zinc-500 ">
+            <Link
+              href="/mobile-legends"
+              className="relative w-full md:min-w-60 md:w-full h-36 md:h-64 overflow-hidden rounded-lg group game-card shadow-inner shadow-zinc-500 "
+            >
               <div
                 className="absolute inset-0 bg-cover md:bg-cover bg-no-repeat bg-center transition-transform duration-300 ease-in-out scale-105 group-hover:scale-100 -z-10 "
                 style={{
@@ -41,8 +45,11 @@ export default function Home() {
                   Mobile Legends
                 </h3>
               </div>
-            </div>
-            <div className="relative w-full md:min-w-60 md:w-full h-36 md:h-64 overflow-hidden rounded-lg group game-card shadow-inner shadow-zinc-500 ">
+            </Link>
+            <Link
+              href="/mobile-legends"
+              className="relative w-full md:min-w-60 md:w-full h-36 md:h-64 overflow-hidden rounded-lg group game-card shadow-inner shadow-zinc-500 "
+            >
               <div
                 className="absolute inset-0 bg-cover md:bg-cover bg-no-repeat bg-center transition-transform duration-300 ease-in-out scale-105 group-hover:scale-100 -z-10 "
                 style={{
@@ -55,8 +62,11 @@ export default function Home() {
                   Mobile Legends
                 </h3>
               </div>
-            </div>
-            <div className="relative w-full md:min-w-60 md:w-full h-36 md:h-64 overflow-hidden rounded-lg group game-card shadow-inner shadow-zinc-500 ">
+            </Link>
+            <Link
+              href="/mobile-legends"
+              className="relative w-full md:min-w-60 md:w-full h-36 md:h-64 overflow-hidden rounded-lg group game-card shadow-inner shadow-zinc-500 "
+            >
               <div
                 className="absolute inset-0 bg-cover md:bg-cover bg-no-repeat bg-center transition-transform duration-300 ease-in-out scale-105 group-hover:scale-100 -z-10 "
                 style={{
@@ -69,8 +79,11 @@ export default function Home() {
                   Mobile Legends
                 </h3>
               </div>
-            </div>
-            <div className="relative w-full md:min-w-60 md:w-full h-36 md:h-64 overflow-hidden rounded-lg group game-card shadow-inner shadow-zinc-500 ">
+            </Link>
+            <Link
+              href="/mobile-legends"
+              className="relative w-full md:min-w-60 md:w-full h-36 md:h-64 overflow-hidden rounded-lg group game-card shadow-inner shadow-zinc-500 "
+            >
               <div
                 className="absolute inset-0 bg-cover md:bg-cover bg-no-repeat bg-center transition-transform duration-300 ease-in-out scale-105 group-hover:scale-100 -z-10 "
                 style={{
@@ -83,8 +96,11 @@ export default function Home() {
                   Mobile Legends
                 </h3>
               </div>
-            </div>
-            <div className="relative w-full md:min-w-60 md:w-full h-36 md:h-64 overflow-hidden rounded-lg group game-card shadow-inner shadow-zinc-500 ">
+            </Link>
+            <Link
+              href="/mobile-legends"
+              className="relative w-full md:min-w-60 md:w-full h-36 md:h-64 overflow-hidden rounded-lg group game-card shadow-inner shadow-zinc-500 "
+            >
               <div
                 className="absolute inset-0 bg-cover md:bg-cover bg-no-repeat bg-center transition-transform duration-300 ease-in-out scale-105 group-hover:scale-100 -z-10 "
                 style={{
@@ -97,7 +113,7 @@ export default function Home() {
                   Mobile Legends
                 </h3>
               </div>
-            </div>
+            </Link>
           </div>
         </section>
         <footer>
