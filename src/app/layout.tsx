@@ -22,9 +22,7 @@ export default function RootLayout({
       <body
         className={`
         ${poppins.className}
-        antialiased
-        bg-gradient-to-b from-zinc-50 from-70% to-zinc-100 to-100% min-h-full bg-fixed
-        `}
+        antialiased text-zinc-600 bg-gradient-to-b from-zinc-50 from-70% to-zinc-200 to-100% min-h-full bg-fixed`}
       >
         {children}
       </body>
