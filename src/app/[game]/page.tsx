@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 interface Props {
   params: {
@@ -8,6 +11,8 @@ interface Props {
 }
 
 export default function page({ params }: Props) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="relative w-full h-[300px] border-b-2 shadow-sm">
@@ -34,7 +39,7 @@ export default function page({ params }: Props) {
           </div>
           <div>
             <h1 className="text-4xl font-light tracking-wider">
-              {params.game}
+              Mobile Legends
             </h1>
             <p className="text-sm font-light tracking-wider">
               Fast, secure, and reliable.
@@ -42,7 +47,7 @@ export default function page({ params }: Props) {
           </div>
         </div>
       </section>
-      <section className="px-10 flex items-start justify-between gap-3">
+      <section className="px-10 flex items-start justify-between gap-3 mb-5">
         <div className="w-full sticky top-2 h-fit bg-zinc-200 rounded-md p-5 border border-zinc-500 shadow">
           <div className="prose">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
@@ -54,7 +59,7 @@ export default function page({ params }: Props) {
             voluptates ut tempore porro dolorum.
           </div>
         </div>
-        <div className="w-full min-h-[200vh] bg-zinc-200 rounded-md p-5 border border-zinc-500 shadow flex flex-col gap-5">
+        <div className="w-full min-h-fit bg-zinc-200 rounded-md p-5 border border-zinc-500 shadow flex flex-col gap-5">
           <section>
             <h2 className="font-medium mb-2">1. Masukkan Data Akun</h2>
             <div className="flex items-center justify-start gap-5 text-sm">
@@ -80,7 +85,7 @@ export default function page({ params }: Props) {
             <h2 className="font-medium mb-2">2. Pilih Nominal</h2>
             <div className="grid grid-cols-3 gap-2">
               <div
-                className="w-fit relative flex cursor-pointer rounded-xl border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
+                className="w-fit relative flex cursor-pointer rounded-md border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
                 role="radio"
                 aria-checked="false"
                 tabIndex={0}
@@ -113,7 +118,7 @@ export default function page({ params }: Props) {
                 </div>
               </div>
               <div
-                className="w-fit relative flex cursor-pointer rounded-xl border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
+                className="w-fit relative flex cursor-pointer rounded-md border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
                 role="radio"
                 aria-checked="false"
                 tabIndex={0}
@@ -146,7 +151,7 @@ export default function page({ params }: Props) {
                 </div>
               </div>
               <div
-                className="w-fit relative flex cursor-pointer rounded-xl border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
+                className="w-fit relative flex cursor-pointer rounded-md border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
                 role="radio"
                 aria-checked="false"
                 tabIndex={0}
@@ -179,7 +184,7 @@ export default function page({ params }: Props) {
                 </div>
               </div>
               <div
-                className="w-fit relative flex cursor-pointer rounded-xl border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
+                className="w-fit relative flex cursor-pointer rounded-md border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
                 role="radio"
                 aria-checked="false"
                 tabIndex={0}
@@ -212,7 +217,7 @@ export default function page({ params }: Props) {
                 </div>
               </div>
               <div
-                className="w-fit relative flex cursor-pointer rounded-xl border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
+                className="w-fit relative flex cursor-pointer rounded-md border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
                 role="radio"
                 aria-checked="false"
                 tabIndex={0}
@@ -245,7 +250,7 @@ export default function page({ params }: Props) {
                 </div>
               </div>
               <div
-                className="w-fit relative flex cursor-pointer rounded-xl border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
+                className="w-fit relative flex cursor-pointer rounded-md border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
                 role="radio"
                 aria-checked="false"
                 tabIndex={0}
@@ -278,7 +283,7 @@ export default function page({ params }: Props) {
                 </div>
               </div>
               <div
-                className="w-fit relative flex cursor-pointer rounded-xl border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
+                className="w-fit relative flex cursor-pointer rounded-md border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
                 role="radio"
                 aria-checked="false"
                 tabIndex={0}
@@ -317,12 +322,69 @@ export default function page({ params }: Props) {
             <div>
               <div className="flex items-center justify-start gap-5 text-sm">
                 <div className="w-full">
-                  <p>Metode Pembayaran</p>
-                  <select className="border border-zinc-500 rounded-md p-1 bg-zinc-100 w-full">
-                    <option value="gopay">Gopay</option>
-                    <option value="ovo">Ovo</option>
-                    <option value="dana">Dana</option>
-                  </select>
+                  <button
+                    onClick={() => setIsExpanded(!isExpanded)}
+                    className="w-full rounded-t-md text-card-foreground disabled:opacity-75 bg-zinc-300 p-2 text-start flex items-center justify-between"
+                  >
+                    E-Wallet
+                    <ExpandMoreIcon
+                      className={`text-zinc-600 transform transition-transform duration-300 ${
+                        isExpanded ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-all duration-300 transform ${
+                      isExpanded ? "max-h-screen" : "max-h-0"
+                    }`}
+                  >
+                    <div className="w-full p-4 bg-zinc-400 grid grid-cols-4 gap-4 text-zinc-50">
+                      <div className="w-36 h-16 px-4 py-2 bg-zinc-500 rounded-md flex flex-col items-start justify-center gap-2  cursor-pointer hover:bg-zinc-500/85 ease-in-out duration-200 ">
+                        <span>Gopay</span>
+                        <i className="text-xs font-medium">Rp 28.499</i>
+                      </div>
+                      <div className="w-36 h-16 px-4 py-2 bg-zinc-500 rounded-md flex flex-col items-start justify-center gap-2  cursor-pointer hover:bg-zinc-500/85 ease-in-out duration-200 ">
+                        <span>Ovo</span>
+                        <i className="text-xs font-medium">Rp 28.499</i>
+                      </div>
+                      <div className="w-36 h-16 px-4 py-2 bg-zinc-500 rounded-md flex flex-col items-start justify-center gap-2  cursor-pointer hover:bg-zinc-500/85 ease-in-out duration-200 ">
+                        <span>Dana</span>
+                        <i className="text-xs font-medium">Rp 28.499</i>
+                      </div>
+                      <div className="w-36 h-16 px-4 py-2 bg-zinc-500 rounded-md flex flex-col items-start justify-center gap-2  cursor-pointer hover:bg-zinc-500/85 ease-in-out duration-200 ">
+                        <span>Shopee Pay</span>
+                        <i className="text-xs font-medium">Rp 28.499</i>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={`w-full rounded-b-md px-4 py-3 bg-zinc-500 transition-all duration-300`}
+                  >
+                    <div className="flex justify-end gap-2">
+                      {/* Replace with actual placeholder images since we can't load external images */}
+                      <Image
+                        src="/icon/ovo.webp"
+                        alt="Ovo"
+                        className="w-5"
+                        width={980}
+                        height={980}
+                      />
+                      <Image
+                        src="/icon/dana.webp"
+                        alt="Dana"
+                        className="w-5"
+                        width={980}
+                        height={980}
+                      />
+                      <Image
+                        src="/icon/gopay.webp"
+                        alt="Gopay"
+                        className="w-5"
+                        width={980}
+                        height={980}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
