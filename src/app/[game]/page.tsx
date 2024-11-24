@@ -54,17 +54,279 @@ export default function page({ params }: Props) {
             voluptates ut tempore porro dolorum.
           </div>
         </div>
-        <div className="w-full min-h-[200vh] bg-zinc-200 rounded-md p-5 border border-zinc-500 shadow">
-          <div className="prose">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. At saepe
-            odit, molestiae nemo, ipsa porro provident debitis dolore quia modi
-            similique possimus nihil architecto perspiciatis cum sequi, amet
-            quidem consequuntur! Perferendis ex quia saepe unde voluptatem
-            corrupti, obcaecati, iste error, iusto in rem nesciunt nam a quos
-            facere tempore eos. Ut illo itaque nulla iste architecto dolor,
-            neque dolorum. Delectus magni sapiente minus laboriosam est,
-            blanditiis optio consequuntur voluptates omnis.
-          </div>
+        <div className="w-full min-h-[200vh] bg-zinc-200 rounded-md p-5 border border-zinc-500 shadow flex flex-col gap-5">
+          <section>
+            <h2 className="font-medium mb-2">1. Masukkan Data Akun</h2>
+            <div className="flex items-center justify-start gap-5 text-sm">
+              <div className="w-full">
+                <p>ID</p>
+                <input
+                  type="text"
+                  placeholder="Masukkan ID"
+                  className="border border-zinc-500 rounded-md p-1 bg-zinc-100 w-full focus:outline-2 focus:outline-zinc-500"
+                />
+              </div>
+              <div className="w-full">
+                <p>Server</p>
+                <input
+                  type="text"
+                  placeholder="Masukkan Server"
+                  className="border border-zinc-500 rounded-md p-1 bg-zinc-100 w-full focus:outline-2 focus:outline-zinc-500"
+                />
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 className="font-medium mb-2">2. Pilih Nominal</h2>
+            <div className="grid grid-cols-3 gap-2">
+              <div
+                className="w-fit relative flex cursor-pointer rounded-xl border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
+                role="radio"
+                aria-checked="false"
+                tabIndex={0}
+              >
+                <span className="flex flex-1 mr-4">
+                  <span className="flex flex-col justify-between">
+                    <span className="block text-xs font-semibold">
+                      Weekly Diamond Pass
+                    </span>
+                    <div>
+                      <span className="mt-1 flex items-center text-[11px] font-semibold">
+                        Rp 28.499
+                      </span>
+                    </div>
+                  </span>
+                </span>
+                <div className="flex aspect-square w-8 items-center">
+                  <Image
+                    alt="Mobile Legends - Weekly Diamond Pass"
+                    fetchPriority="high"
+                    width="300"
+                    height="300"
+                    decoding="async"
+                    data-nimg="1"
+                    className="object-contain object-right"
+                    sizes="80vh"
+                    src="/icon/diamond.webp"
+                    style={{ color: "transparent" }}
+                  />
+                </div>
+              </div>
+              <div
+                className="w-fit relative flex cursor-pointer rounded-xl border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
+                role="radio"
+                aria-checked="false"
+                tabIndex={0}
+              >
+                <span className="flex flex-1 mr-4">
+                  <span className="flex flex-col justify-between">
+                    <span className="block text-xs font-semibold">
+                      Weekly Diamond Pass
+                    </span>
+                    <div>
+                      <span className="mt-1 flex items-center text-[11px] font-semibold">
+                        Rp 28.499
+                      </span>
+                    </div>
+                  </span>
+                </span>
+                <div className="flex aspect-square w-8 items-center">
+                  <Image
+                    alt="Mobile Legends - Weekly Diamond Pass"
+                    fetchPriority="high"
+                    width="300"
+                    height="300"
+                    decoding="async"
+                    data-nimg="1"
+                    className="object-contain object-right"
+                    sizes="80vh"
+                    src="/icon/diamond.webp"
+                    style={{ color: "transparent" }}
+                  />
+                </div>
+              </div>
+              <div
+                className="w-fit relative flex cursor-pointer rounded-xl border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
+                role="radio"
+                aria-checked="false"
+                tabIndex={0}
+              >
+                <span className="flex flex-1 mr-4">
+                  <span className="flex flex-col justify-between">
+                    <span className="block text-xs font-semibold">
+                      Weekly Diamond Pass
+                    </span>
+                    <div>
+                      <span className="mt-1 flex items-center text-[11px] font-semibold">
+                        Rp 28.499
+                      </span>
+                    </div>
+                  </span>
+                </span>
+                <div className="flex aspect-square w-8 items-center">
+                  <Image
+                    alt="Mobile Legends - Weekly Diamond Pass"
+                    fetchPriority="high"
+                    width="300"
+                    height="300"
+                    decoding="async"
+                    data-nimg="1"
+                    className="object-contain object-right"
+                    sizes="80vh"
+                    src="/icon/diamond.webp"
+                    style={{ color: "transparent" }}
+                  />
+                </div>
+              </div>
+              <div
+                className="w-fit relative flex cursor-pointer rounded-xl border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
+                role="radio"
+                aria-checked="false"
+                tabIndex={0}
+              >
+                <span className="flex flex-1 mr-4">
+                  <span className="flex flex-col justify-between">
+                    <span className="block text-xs font-semibold">
+                      Weekly Diamond Pass
+                    </span>
+                    <div>
+                      <span className="mt-1 flex items-center text-[11px] font-semibold">
+                        Rp 28.499
+                      </span>
+                    </div>
+                  </span>
+                </span>
+                <div className="flex aspect-square w-8 items-center">
+                  <Image
+                    alt="Mobile Legends - Weekly Diamond Pass"
+                    fetchPriority="high"
+                    width="300"
+                    height="300"
+                    decoding="async"
+                    data-nimg="1"
+                    className="object-contain object-right"
+                    sizes="80vh"
+                    src="/icon/diamond.webp"
+                    style={{ color: "transparent" }}
+                  />
+                </div>
+              </div>
+              <div
+                className="w-fit relative flex cursor-pointer rounded-xl border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
+                role="radio"
+                aria-checked="false"
+                tabIndex={0}
+              >
+                <span className="flex flex-1 mr-4">
+                  <span className="flex flex-col justify-between">
+                    <span className="block text-xs font-semibold">
+                      Weekly Diamond Pass
+                    </span>
+                    <div>
+                      <span className="mt-1 flex items-center text-[11px] font-semibold">
+                        Rp 28.499
+                      </span>
+                    </div>
+                  </span>
+                </span>
+                <div className="flex aspect-square w-8 items-center">
+                  <Image
+                    alt="Mobile Legends - Weekly Diamond Pass"
+                    fetchPriority="high"
+                    width="300"
+                    height="300"
+                    decoding="async"
+                    data-nimg="1"
+                    className="object-contain object-right"
+                    sizes="80vh"
+                    src="/icon/diamond.webp"
+                    style={{ color: "transparent" }}
+                  />
+                </div>
+              </div>
+              <div
+                className="w-fit relative flex cursor-pointer rounded-xl border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
+                role="radio"
+                aria-checked="false"
+                tabIndex={0}
+              >
+                <span className="flex flex-1 mr-4">
+                  <span className="flex flex-col justify-between">
+                    <span className="block text-xs font-semibold">
+                      Weekly Diamond Pass
+                    </span>
+                    <div>
+                      <span className="mt-1 flex items-center text-[11px] font-semibold">
+                        Rp 28.499
+                      </span>
+                    </div>
+                  </span>
+                </span>
+                <div className="flex aspect-square w-8 items-center">
+                  <Image
+                    alt="Mobile Legends - Weekly Diamond Pass"
+                    fetchPriority="high"
+                    width="300"
+                    height="300"
+                    decoding="async"
+                    data-nimg="1"
+                    className="object-contain object-right"
+                    sizes="80vh"
+                    src="/icon/diamond.webp"
+                    style={{ color: "transparent" }}
+                  />
+                </div>
+              </div>
+              <div
+                className="w-fit relative flex cursor-pointer rounded-xl border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
+                role="radio"
+                aria-checked="false"
+                tabIndex={0}
+              >
+                <span className="flex flex-1 mr-4">
+                  <span className="flex flex-col justify-between">
+                    <span className="block text-xs font-semibold">
+                      Weekly Diamond Pass
+                    </span>
+                    <div>
+                      <span className="mt-1 flex items-center text-[11px] font-semibold">
+                        Rp 28.499
+                      </span>
+                    </div>
+                  </span>
+                </span>
+                <div className="flex aspect-square w-8 items-center">
+                  <Image
+                    alt="Mobile Legends - Weekly Diamond Pass"
+                    fetchPriority="high"
+                    width="300"
+                    height="300"
+                    decoding="async"
+                    data-nimg="1"
+                    className="object-contain object-right"
+                    sizes="80vh"
+                    src="/icon/diamond.webp"
+                    style={{ color: "transparent" }}
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 className="font-medium mb-2">3. Pilih Pembayaran</h2>
+            <div>
+              <div className="flex items-center justify-start gap-5 text-sm">
+                <div className="w-full">
+                  <p>Metode Pembayaran</p>
+                  <select className="border border-zinc-500 rounded-md p-1 bg-zinc-100 w-full">
+                    <option value="gopay">Gopay</option>
+                    <option value="ovo">Ovo</option>
+                    <option value="dana">Dana</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </section>
     </div>
