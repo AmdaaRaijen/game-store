@@ -25,6 +25,11 @@ export default function RootLayout({
         antialiased text-zinc-600 bg-gradient-to-b from-zinc-50 from-70% to-zinc-200 to-100% min-h-full bg-fixed`}
       >
         {children}
+        <footer>
+          <div className="flex items-center justify-center h-20 w-full bg-zinc-500 text-white">
+            <p>© 2024 Amda Game Store. All rights reserved.</p>
+          </div>
+        </footer>
       </body>
     </html>
   );

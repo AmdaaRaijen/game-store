@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 interface Props {
@@ -10,8 +10,79 @@ interface Props {
   };
 }
 
+const items: Array<{
+  key: number;
+  name: string;
+  price: string;
+  icon: string;
+}> = [
+  {
+    key: 1,
+    name: "Weekly Diamond Pass",
+    price: "Rp 28.499",
+    icon: "/icon/diamond.webp",
+  },
+  {
+    key: 2,
+    name: "Weekly Diamond Pass",
+    price: "Rp 28.499",
+    icon: "/icon/diamond.webp",
+  },
+  {
+    key: 3,
+    name: "Weekly Diamond Pass",
+    price: "Rp 28.499",
+    icon: "/icon/diamond.webp",
+  },
+  {
+    key: 4,
+    name: "Weekly Diamond Pass",
+    price: "Rp 28.499",
+    icon: "/icon/diamond.webp",
+  },
+  {
+    key: 5,
+    name: "Weekly Diamond Pass",
+    price: "Rp 28.499",
+    icon: "/icon/diamond.webp",
+  },
+  {
+    key: 6,
+    name: "Weekly Diamond Pass",
+    price: "Rp 28.499",
+    icon: "/icon/diamond.webp",
+  },
+];
+
 export default function page({ params }: Props) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<number | null>(null);
+  const paymentRef = useRef<HTMLDivElement>(null);
+
+  const handleCardClick = (itemKey: number) => {
+    setSelectedItem(itemKey);
+
+    if (paymentRef.current) {
+      const rect = paymentRef.current.getBoundingClientRect();
+
+      const isNotInViewport = rect.bottom - 35 > window.innerHeight;
+
+      if (isNotInViewport) {
+        const elementPosition = rect.top;
+        const offsetPosition =
+          elementPosition +
+          window.scrollY -
+          window.innerHeight +
+          paymentRef.current.offsetHeight +
+          32;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -84,243 +155,57 @@ export default function page({ params }: Props) {
           <section>
             <h2 className="font-medium mb-2">2. Pilih Nominal</h2>
             <div className="grid grid-cols-3 gap-2">
-              <div
-                className="w-fit relative flex cursor-pointer rounded-md border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
-                role="radio"
-                aria-checked="false"
-                tabIndex={0}
-              >
-                <span className="flex flex-1 mr-4">
-                  <span className="flex flex-col justify-between">
-                    <span className="block text-xs font-semibold">
-                      Weekly Diamond Pass
-                    </span>
-                    <div>
-                      <span className="mt-1 flex items-center text-[11px] font-semibold">
-                        Rp 28.499
+              {items.map((item) => (
+                <div
+                  key={item.key}
+                  className={`w-fit relative flex cursor-pointer rounded-md border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100
+                  ${
+                    item.key === selectedItem
+                      ? "shadow-[0_3px_10px_rgb(0,0,0,0.2)] transition-shadow duration-50"
+                      : "border-zinc-300 shadow-none transition-shadow duration-50"
+                  }`}
+                  role="radio"
+                  aria-checked="false"
+                  tabIndex={0}
+                  onClick={() => handleCardClick(item.key)}
+                >
+                  <span className="flex flex-1 mr-4">
+                    <span className="flex flex-col justify-between">
+                      <span className="block text-xs font-semibold">
+                        {item.name}
                       </span>
-                    </div>
-                  </span>
-                </span>
-                <div className="flex aspect-square w-8 items-center">
-                  <Image
-                    alt="Mobile Legends - Weekly Diamond Pass"
-                    fetchPriority="high"
-                    width="300"
-                    height="300"
-                    decoding="async"
-                    data-nimg="1"
-                    className="object-contain object-right"
-                    sizes="80vh"
-                    src="/icon/diamond.webp"
-                    style={{ color: "transparent" }}
-                  />
-                </div>
-              </div>
-              <div
-                className="w-fit relative flex cursor-pointer rounded-md border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
-                role="radio"
-                aria-checked="false"
-                tabIndex={0}
-              >
-                <span className="flex flex-1 mr-4">
-                  <span className="flex flex-col justify-between">
-                    <span className="block text-xs font-semibold">
-                      Weekly Diamond Pass
+                      <div>
+                        <span className="mt-1 flex items-center text-[11px] font-semibold">
+                          {item.price}
+                        </span>
+                      </div>
                     </span>
-                    <div>
-                      <span className="mt-1 flex items-center text-[11px] font-semibold">
-                        Rp 28.499
-                      </span>
-                    </div>
                   </span>
-                </span>
-                <div className="flex aspect-square w-8 items-center">
-                  <Image
-                    alt="Mobile Legends - Weekly Diamond Pass"
-                    fetchPriority="high"
-                    width="300"
-                    height="300"
-                    decoding="async"
-                    data-nimg="1"
-                    className="object-contain object-right"
-                    sizes="80vh"
-                    src="/icon/diamond.webp"
-                    style={{ color: "transparent" }}
-                  />
+                  <div className="flex aspect-square w-8 items-center">
+                    <Image
+                      alt="Mobile Legends - Weekly Diamond Pass"
+                      fetchPriority="high"
+                      width="300"
+                      height="300"
+                      decoding="async"
+                      data-nimg="1"
+                      className="object-contain object-right"
+                      sizes="80vh"
+                      src={item.icon}
+                      style={{ color: "transparent" }}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div
-                className="w-fit relative flex cursor-pointer rounded-md border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
-                role="radio"
-                aria-checked="false"
-                tabIndex={0}
-              >
-                <span className="flex flex-1 mr-4">
-                  <span className="flex flex-col justify-between">
-                    <span className="block text-xs font-semibold">
-                      Weekly Diamond Pass
-                    </span>
-                    <div>
-                      <span className="mt-1 flex items-center text-[11px] font-semibold">
-                        Rp 28.499
-                      </span>
-                    </div>
-                  </span>
-                </span>
-                <div className="flex aspect-square w-8 items-center">
-                  <Image
-                    alt="Mobile Legends - Weekly Diamond Pass"
-                    fetchPriority="high"
-                    width="300"
-                    height="300"
-                    decoding="async"
-                    data-nimg="1"
-                    className="object-contain object-right"
-                    sizes="80vh"
-                    src="/icon/diamond.webp"
-                    style={{ color: "transparent" }}
-                  />
-                </div>
-              </div>
-              <div
-                className="w-fit relative flex cursor-pointer rounded-md border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
-                role="radio"
-                aria-checked="false"
-                tabIndex={0}
-              >
-                <span className="flex flex-1 mr-4">
-                  <span className="flex flex-col justify-between">
-                    <span className="block text-xs font-semibold">
-                      Weekly Diamond Pass
-                    </span>
-                    <div>
-                      <span className="mt-1 flex items-center text-[11px] font-semibold">
-                        Rp 28.499
-                      </span>
-                    </div>
-                  </span>
-                </span>
-                <div className="flex aspect-square w-8 items-center">
-                  <Image
-                    alt="Mobile Legends - Weekly Diamond Pass"
-                    fetchPriority="high"
-                    width="300"
-                    height="300"
-                    decoding="async"
-                    data-nimg="1"
-                    className="object-contain object-right"
-                    sizes="80vh"
-                    src="/icon/diamond.webp"
-                    style={{ color: "transparent" }}
-                  />
-                </div>
-              </div>
-              <div
-                className="w-fit relative flex cursor-pointer rounded-md border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
-                role="radio"
-                aria-checked="false"
-                tabIndex={0}
-              >
-                <span className="flex flex-1 mr-4">
-                  <span className="flex flex-col justify-between">
-                    <span className="block text-xs font-semibold">
-                      Weekly Diamond Pass
-                    </span>
-                    <div>
-                      <span className="mt-1 flex items-center text-[11px] font-semibold">
-                        Rp 28.499
-                      </span>
-                    </div>
-                  </span>
-                </span>
-                <div className="flex aspect-square w-8 items-center">
-                  <Image
-                    alt="Mobile Legends - Weekly Diamond Pass"
-                    fetchPriority="high"
-                    width="300"
-                    height="300"
-                    decoding="async"
-                    data-nimg="1"
-                    className="object-contain object-right"
-                    sizes="80vh"
-                    src="/icon/diamond.webp"
-                    style={{ color: "transparent" }}
-                  />
-                </div>
-              </div>
-              <div
-                className="w-fit relative flex cursor-pointer rounded-md border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
-                role="radio"
-                aria-checked="false"
-                tabIndex={0}
-              >
-                <span className="flex flex-1 mr-4">
-                  <span className="flex flex-col justify-between">
-                    <span className="block text-xs font-semibold">
-                      Weekly Diamond Pass
-                    </span>
-                    <div>
-                      <span className="mt-1 flex items-center text-[11px] font-semibold">
-                        Rp 28.499
-                      </span>
-                    </div>
-                  </span>
-                </span>
-                <div className="flex aspect-square w-8 items-center">
-                  <Image
-                    alt="Mobile Legends - Weekly Diamond Pass"
-                    fetchPriority="high"
-                    width="300"
-                    height="300"
-                    decoding="async"
-                    data-nimg="1"
-                    className="object-contain object-right"
-                    sizes="80vh"
-                    src="/icon/diamond.webp"
-                    style={{ color: "transparent" }}
-                  />
-                </div>
-              </div>
-              <div
-                className="w-fit relative flex cursor-pointer rounded-md border border-zinc-300  shadow-sm outline-none md:p-4 bg-zinc-100"
-                role="radio"
-                aria-checked="false"
-                tabIndex={0}
-              >
-                <span className="flex flex-1 mr-4">
-                  <span className="flex flex-col justify-between">
-                    <span className="block text-xs font-semibold">
-                      Weekly Diamond Pass
-                    </span>
-                    <div>
-                      <span className="mt-1 flex items-center text-[11px] font-semibold">
-                        Rp 28.499
-                      </span>
-                    </div>
-                  </span>
-                </span>
-                <div className="flex aspect-square w-8 items-center">
-                  <Image
-                    alt="Mobile Legends - Weekly Diamond Pass"
-                    fetchPriority="high"
-                    width="300"
-                    height="300"
-                    decoding="async"
-                    data-nimg="1"
-                    className="object-contain object-right"
-                    sizes="80vh"
-                    src="/icon/diamond.webp"
-                    style={{ color: "transparent" }}
-                  />
-                </div>
-              </div>
+              ))}
             </div>
           </section>
           <section>
             <h2 className="font-medium mb-2">3. Pilih Pembayaran</h2>
             <div>
-              <div className="flex items-center justify-start gap-5 text-sm">
+              <div
+                className="flex items-center justify-start gap-5 text-sm"
+                ref={paymentRef}
+              >
                 <div className="w-full">
                   <button
                     onClick={() => setIsExpanded(!isExpanded)}

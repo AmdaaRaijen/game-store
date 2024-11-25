@@ -116,11 +116,6 @@ export default function Home() {
             </Link>
           </div>
         </section>
-        <footer>
-          <div className="flex items-center justify-center h-20 w-full bg-zinc-500 text-white">
-            <p>© 2024 Amda Game Store. All rights reserved.</p>
-          </div>
-        </footer>
       </main>
     </div>
   );
