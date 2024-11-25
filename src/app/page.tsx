@@ -1,4 +1,4 @@
-import ImageCarousel from "@/components/organism/Carousel";
+import ImageCarousel from "@/components/molecules/Carousel";
 import Link from "next/link";
 
 const images = [
