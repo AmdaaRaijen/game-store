@@ -8,6 +8,7 @@ import {
   items,
 } from "@/data/tempData";
 import PaymentMethodContainer from "../molecules/PaymentMethodContainer";
+import Input from "../atom/Input";
 
 export default function ProductItems() {
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
@@ -43,22 +44,8 @@ export default function ProductItems() {
       <section>
         <h2 className="font-medium mb-2">1. Masukkan Data Akun</h2>
         <div className="flex items-center justify-start gap-5 text-sm">
-          <div className="w-full">
-            <p>ID</p>
-            <input
-              type="text"
-              placeholder="Masukkan ID"
-              className="border border-zinc-500 rounded-md p-1 bg-zinc-100 w-full focus:outline-2 focus:outline-zinc-500"
-            />
-          </div>
-          <div className="w-full">
-            <p>Server</p>
-            <input
-              type="text"
-              placeholder="Masukkan Server"
-              className="border border-zinc-500 rounded-md p-1 bg-zinc-100 w-full focus:outline-2 focus:outline-zinc-500"
-            />
-          </div>
+          <Input label="ID" placeholder="Masukkan ID" type="text" />
+          <Input label="Server" placeholder="Masukkan Server" type="text" />
         </div>
       </section>
       <section>
