@@ -81,3 +81,53 @@ export const paymentMethodPreview: Array<{
     icon: "/icon/ovo.webp",
   },
 ];
+
+export const productData: Array<{
+  id: number;
+  name: string;
+  url: string;
+  image: string;
+}> = [
+  {
+    id: 1,
+    name: "Mobile Legends",
+    url: "mobile-legends",
+    image: "xavier.jpg",
+  },
+  {
+    id: 2,
+    name: "Mobile Legends",
+    url: "mobile-legends",
+    image: "xavier.jpg",
+  },
+  {
+    id: 3,
+    name: "Mobile Legends",
+    url: "mobile-legends",
+    image: "xavier.jpg",
+  },
+  {
+    id: 4,
+    name: "Mobile Legends",
+    url: "mobile-legends",
+    image: "xavier.jpg",
+  },
+  {
+    id: 5,
+    name: "Mobile Legends",
+    url: "mobile-legends",
+    image: "xavier.jpg",
+  },
+  {
+    id: 6,
+    name: "Mobile Legends",
+    url: "mobile-legends",
+    image: "xavier.jpg",
+  },
+  {
+    id: 7,
+    name: "Mobile Legends",
+    url: "mobile-legends",
+    image: "xavier.jpg",
+  },
+];
