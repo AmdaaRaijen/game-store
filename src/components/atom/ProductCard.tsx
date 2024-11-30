@@ -16,7 +16,7 @@ export default function ProductCard({ title, url, image }: ProductCardProps) {
       <div
         className="absolute inset-0 bg-cover md:bg-cover bg-no-repeat bg-center transition-transform duration-300 ease-in-out scale-105 group-hover:scale-100 -z-10 "
         style={{
-          backgroundImage: `url("/${image}")`,
+          backgroundImage: `url("${image}")`,
         }}
       ></div>
       <div className="absolute inset-0 bg-zinc-500 opacity-15" />

@@ -1,6 +1,5 @@
 import ImageCarousel from "@/components/molecules/Carousel";
-import { productData } from "@/data/tempData";
-import ProductCard from "@/components/atom/ProductCard";
+import ListProductCategory from "@/components/organism/ListProductCategory";
 
 const images = [
   "https://picsum.photos/1200/600.webp?random=1",
@@ -29,16 +28,7 @@ export default function Home() {
           <div className="ml-4">
             <h2 className="font-light text-4xl tracking-wider">Game List</h2>
           </div>
-          <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 pt-3 w-full">
-            {productData.map((product) => (
-              <ProductCard
-                key={product.id}
-                title={product.name}
-                url={product.url}
-                image={product.image}
-              />
-            ))}
-          </div>
+          <ListProductCategory />
         </section>
       </main>
     </div>
