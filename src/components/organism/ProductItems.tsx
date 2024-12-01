@@ -2,20 +2,28 @@
 
 import React, { useRef, useState } from "react";
 import ItemCard from "../atom/ItemCard";
-import {
-  paymentMethodItems,
-  paymentMethodPreview,
-  items,
-} from "@/data/tempData";
+import { paymentMethodItems, paymentMethodPreview } from "@/data/tempData";
 import PaymentMethodContainer from "../molecules/PaymentMethodContainer";
 import Input from "../atom/Input";
+import { ProductDataType, ProductType } from "@/types/Product";
+
+async function handleGetItem(): Promise<ProductType> {
+  const res = await fetch("http://localhost:5000/products");
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
 
 export default function ProductItems() {
-  const [selectedItem, setSelectedItem] = useState<number | null>(null);
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
+  const [itemData, setItemData] = useState<ProductDataType[] | null>(null);
   const paymentRef = useRef<HTMLDivElement>(null);
 
-  const handleCardClick = (itemKey: number) => {
-    setSelectedItem(itemKey);
+  const handleCardClick = (itemCode: string) => {
+    setSelectedItem(itemCode);
 
     if (paymentRef.current) {
       const rect = paymentRef.current.getBoundingClientRect();
@@ -39,6 +47,12 @@ export default function ProductItems() {
     }
   };
 
+  React.useEffect(() => {
+    handleGetItem().then((data) => {
+      setItemData(data.data);
+    });
+  }, []);
+
   return (
     <div className="w-full min-h-fit bg-zinc-200 rounded-md p-5 border border-zinc-500 shadow flex flex-col gap-5">
       <section>
@@ -51,14 +65,18 @@ export default function ProductItems() {
       <section>
         <h2 className="font-medium mb-2">2. Pilih Nominal</h2>
         <div className="grid grid-cols-3 gap-2">
-          {items.map((item) => (
-            <ItemCard
-              key={item.key}
-              handleCardClick={handleCardClick}
-              selectedItemKey={selectedItem}
-              item={item}
-            />
-          ))}
+          {itemData === null ? (
+            <div>Item Tidak Tersedia</div>
+          ) : (
+            itemData.map((item: ProductDataType) => (
+              <ItemCard
+                key={item.code}
+                handleCardClick={handleCardClick}
+                selectedItemKey={selectedItem}
+                item={item}
+              />
+            ))
+          )}
         </div>
       </section>
       <section>
