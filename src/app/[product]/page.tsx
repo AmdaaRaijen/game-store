@@ -5,7 +5,7 @@ import ProductItems from "@/components/organism/ProductItems";
 
 interface Props {
   params: {
-    game: string;
+    product: string;
   };
 }
 
