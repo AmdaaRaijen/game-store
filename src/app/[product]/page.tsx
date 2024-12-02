@@ -1,6 +1,6 @@
 import Banner from "@/components/atom/Banner";
 import ProductTitle from "@/components/molecules/ProductTitle";
-import OrderSidebar from "@/components/organism/ProductTutorial";
+import OrderSidebar from "@/components/organism/OrderSidebar";
 import ProductItems from "@/components/organism/ProductItems";
 
 interface Props {
