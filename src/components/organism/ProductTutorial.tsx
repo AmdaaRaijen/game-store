@@ -1,9 +1,10 @@
 import React from "react";
+import OrderSummary from "../molecules/OrderSummary";
 
-export default function ProductTutorial() {
+export default function OrderSidebar() {
   return (
-    <div className="w-full sticky top-2 h-fit bg-zinc-200 rounded-md p-5 border border-zinc-500 shadow">
-      <div className="prose">
+    <div className="w-full sticky top-2 h-fit flex flex-col gap-3">
+      <div className=" bg-zinc-200 rounded-md p-5 border border-zinc-500 shadow prose">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt ea
         qui tempora. Culpa fuga tempore et quis hic, sunt dolorem asperiores
         illo facere amet aut quibusdam commodi rerum. Dolor vero rem iure
@@ -12,6 +13,7 @@ export default function ProductTutorial() {
         esse modi accusamus a, magni expedita voluptas accusantium voluptates ut
         tempore porro dolorum.
       </div>
+      <OrderSummary />
     </div>
   );
 }

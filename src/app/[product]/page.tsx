@@ -1,6 +1,6 @@
 import Banner from "@/components/atom/Banner";
 import ProductTitle from "@/components/molecules/ProductTitle";
-import ProductTutorial from "@/components/organism/ProductTutorial";
+import OrderSidebar from "@/components/organism/ProductTutorial";
 import ProductItems from "@/components/organism/ProductItems";
 
 interface Props {
@@ -15,7 +15,7 @@ export default function page({}: Props) {
       <Banner />
       <ProductTitle />
       <section className="px-10 flex items-start justify-between gap-3 mb-5">
-        <ProductTutorial />
+        <OrderSidebar />
         <ProductItems />
       </section>
     </div>
