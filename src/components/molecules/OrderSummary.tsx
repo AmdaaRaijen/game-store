@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import Button from "../atom/Button";
 import { useOrderContext } from "@/context/OrderContext";
+import NumberFlow from "@number-flow/react";
 
 export default function OrderSummary() {
   const { orderState } = useOrderContext();
@@ -30,12 +31,15 @@ export default function OrderSummary() {
             </div>
             <div className="flex justify-between items-center">
               <p className="font-medium">Total pembayaran</p>
-              <p>
-                {orderState.price.basic.toLocaleString("id-ID", {
-                  style: "currency",
-                  currency: "IDR",
-                })}
-              </p>
+              <div>
+                <span>Rp. </span>
+                <NumberFlow
+                  value={orderState.price.basic}
+                  format={{
+                    style: "decimal",
+                  }}
+                />
+              </div>
             </div>
           </div>
           <Button />
