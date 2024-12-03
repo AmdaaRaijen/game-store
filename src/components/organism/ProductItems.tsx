@@ -6,7 +6,7 @@ import { paymentMethodItems, paymentMethodPreview } from "@/data/tempData";
 import PaymentMethodContainer from "../molecules/PaymentMethodContainer";
 import Input from "../atom/Input";
 import { ProductDataType, ProductType } from "@/types/Product";
-import { useOrderContext } from "@/app/context/OrderContext";
+import { useOrderContext } from "@/context/OrderContext";
 
 async function handleGetItem(): Promise<ProductType> {
   const res = await fetch("http://localhost:5000/products");

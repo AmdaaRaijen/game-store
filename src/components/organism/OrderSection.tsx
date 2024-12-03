@@ -1,7 +1,7 @@
 import React from "react";
 import OrderSidebar from "./OrderSidebar";
 import ProductItems from "./ProductItems";
-import { OrderProvider } from "@/app/context/OrderContext";
+import { OrderProvider } from "@/context/OrderContext";
 
 export default function OrderSection() {
   return (

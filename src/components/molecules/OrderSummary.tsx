@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React from "react";
 import Button from "../atom/Button";
-import { useOrderContext } from "@/app/context/OrderContext";
+import { useOrderContext } from "@/context/OrderContext";
 
 export default function OrderSummary() {
   const { orderState } = useOrderContext();
