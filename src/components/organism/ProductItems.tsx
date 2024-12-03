@@ -6,6 +6,7 @@ import { paymentMethodItems, paymentMethodPreview } from "@/data/tempData";
 import PaymentMethodContainer from "../molecules/PaymentMethodContainer";
 import Input from "../atom/Input";
 import { ProductDataType, ProductType } from "@/types/Product";
+import { useOrderContext } from "@/app/context/OrderContext";
 
 async function handleGetItem(): Promise<ProductType> {
   const res = await fetch("http://localhost:5000/products");
@@ -18,12 +19,15 @@ async function handleGetItem(): Promise<ProductType> {
 }
 
 export default function ProductItems() {
-  const [selectedItem, setSelectedItem] = useState<string | null>(null);
-  const [itemData, setItemData] = useState<ProductDataType[] | null>(null);
+  const [productItemData, setProductItemData] = useState<
+    ProductDataType[] | null
+  >(null);
   const paymentRef = useRef<HTMLDivElement>(null);
 
-  const handleCardClick = (itemCode: string) => {
-    setSelectedItem(itemCode);
+  const { setOrderState, orderState } = useOrderContext();
+
+  const handleCardClick = (orderItem: ProductDataType) => {
+    setOrderState(orderItem);
 
     if (paymentRef.current) {
       const rect = paymentRef.current.getBoundingClientRect();
@@ -49,7 +53,7 @@ export default function ProductItems() {
 
   React.useEffect(() => {
     handleGetItem().then((data) => {
-      setItemData(data.data);
+      setProductItemData(data.data);
     });
   }, []);
 
@@ -65,14 +69,14 @@ export default function ProductItems() {
       <section>
         <h2 className="font-medium mb-2">2. Pilih Nominal</h2>
         <div className="grid grid-cols-3 gap-2">
-          {itemData === null ? (
+          {productItemData === null ? (
             <div>Item Tidak Tersedia</div>
           ) : (
-            itemData.map((item: ProductDataType) => (
+            productItemData.map((item: ProductDataType) => (
               <ItemCard
                 key={item.code}
                 handleCardClick={handleCardClick}
-                selectedItemKey={selectedItem}
+                selectedItemKey={orderState?.code}
                 item={item}
               />
             ))

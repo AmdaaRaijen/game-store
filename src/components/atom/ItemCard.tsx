@@ -4,8 +4,8 @@ import React from "react";
 
 interface ItemCardProps {
   item: ProductDataType;
-  selectedItemKey: string | null;
-  handleCardClick: (itemCode: string) => void;
+  selectedItemKey: string | undefined;
+  handleCardClick: (orderItem: ProductDataType) => void;
 }
 
 export default function ItemCard({
@@ -16,7 +16,7 @@ export default function ItemCard({
   return (
     <div
       key={item.code}
-      className={`w-full relative flex cursor-pointer rounded-md border border-zinc-300  outline-none md:p-4 bg-zinc-100
+      className={`w-full relative flex cursor-pointer rounded-md border border-zinc-300  outline-none md:p-4 bg-zinc-100 hover:ring-2 hover:ring-zinc-400/75
         ${item.status === "empty" ? "hidden" : ""}
   ${
     item.code === selectedItemKey
@@ -27,7 +27,7 @@ export default function ItemCard({
       aria-checked="false"
       tabIndex={0}
       onClick={() => {
-        handleCardClick(item.code);
+        handleCardClick(item);
       }}
     >
       <span className="flex flex-1 mr-4">
