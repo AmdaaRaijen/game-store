@@ -3,6 +3,8 @@
 import Image from "next/image";
 import React, { RefObject, useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import PaymentMethodCard from "../atom/PaymentMethodCard";
+import { useOrderContext } from "@/context/OrderContext";
 
 interface PaymentMethodCardProps {
   ref: RefObject<HTMLDivElement>;
@@ -24,6 +26,7 @@ export default function PaymentMethodContainer({
   paymentMethodPreview,
 }: PaymentMethodCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const { orderState } = useOrderContext();
 
   return (
     <div className="flex items-center justify-start gap-5 text-sm" ref={ref}>
@@ -46,18 +49,11 @@ export default function PaymentMethodContainer({
         >
           <div className="w-full p-4 bg-zinc-400 grid grid-cols-4 gap-4 text-zinc-50">
             {paymentMethodItems.map((item, idx) => (
-              <div
+              <PaymentMethodCard
                 key={idx}
-                className="w-36 h-16 px-4 py-2 bg-zinc-500 rounded-md flex flex-col items-start justify-center gap-2  cursor-pointer hover:bg-zinc-500/85 ease-in-out duration-200 "
-              >
-                <span>{item.name}</span>
-                <i className="text-xs font-medium">
-                  {item.amount.toLocaleString("id-ID", {
-                    style: "currency",
-                    currency: "IDR",
-                  })}
-                </i>
-              </div>
+                name={item.name}
+                price={orderState ? orderState.price.basic : 0}
+              />
             ))}
           </div>
         </div>
