@@ -1,13 +1,17 @@
 import Link from "next/link";
 import React from "react";
 
-interface ProductCardProps {
+interface ProductCategoryCardProps {
   title: string;
   url: string;
   image: string;
 }
 
-export default function ProductCard({ title, url, image }: ProductCardProps) {
+export default function ProductCategoryCard({
+  title,
+  url,
+  image,
+}: ProductCategoryCardProps) {
   return (
     <Link
       href={`/${url}`}

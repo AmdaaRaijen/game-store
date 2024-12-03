@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCard from "../atom/ProductCard";
+import ProductCategoryCard from "../atom/ProductCategoryCard";
 import { ProductCategory } from "@/types/ProductCategory";
 
 const getProductCategories = async (): Promise<ProductCategory[]> => {
@@ -15,7 +15,7 @@ export default async function ListProductCategory() {
   return (
     <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 pt-3 w-full">
       {ProductCategory.map((product) => (
-        <ProductCard
+        <ProductCategoryCard
           key={product.id}
           title={product.name}
           url={product.slug}
