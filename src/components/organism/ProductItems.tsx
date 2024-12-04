@@ -4,9 +4,9 @@ import React, { useRef, useState } from "react";
 import ItemCard from "../atom/ItemCard";
 import { paymentMethodItems, paymentMethodPreview } from "@/data/tempData";
 import PaymentMethodContainer from "../molecules/PaymentMethodContainer";
-import Input from "../atom/Input";
 import { ProductDataType, ProductType } from "@/types/Product";
 import { useOrderContext } from "@/context/OrderContext";
+import AccountInput from "../molecules/AccountInput";
 
 async function handleGetItem(): Promise<ProductType> {
   const res = await fetch("http://localhost:5000/products");
@@ -24,10 +24,10 @@ export default function ProductItems() {
   >(null);
   const paymentRef = useRef<HTMLDivElement>(null);
 
-  const { setOrderState, orderState } = useOrderContext();
+  const { setProduct, product } = useOrderContext();
 
   const handleCardClick = (orderItem: ProductDataType) => {
-    setOrderState(orderItem);
+    setProduct(orderItem);
 
     if (paymentRef.current) {
       const rect = paymentRef.current.getBoundingClientRect();
@@ -59,13 +59,7 @@ export default function ProductItems() {
 
   return (
     <div className="w-full min-h-fit bg-zinc-200 rounded-md p-5 border border-zinc-500 shadow flex flex-col gap-5">
-      <section>
-        <h2 className="font-medium mb-2">1. Masukkan Data Akun</h2>
-        <div className="flex items-center justify-start gap-5 text-sm">
-          <Input label="ID" placeholder="Masukkan ID" type="text" />
-          <Input label="Server" placeholder="Masukkan Server" type="text" />
-        </div>
-      </section>
+      <AccountInput />
       <section>
         <h2 className="font-medium mb-2">2. Pilih Nominal</h2>
         <div className="grid grid-cols-3 gap-2">
@@ -76,7 +70,7 @@ export default function ProductItems() {
               <ItemCard
                 key={item.code}
                 handleCardClick={handleCardClick}
-                selectedItemKey={orderState?.code}
+                selectedItemKey={product?.code}
                 item={item}
               />
             ))

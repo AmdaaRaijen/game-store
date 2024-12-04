@@ -26,7 +26,7 @@ export default function PaymentMethodContainer({
   paymentMethodPreview,
 }: PaymentMethodCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const { orderState } = useOrderContext();
+  const { product } = useOrderContext();
 
   return (
     <div className="flex items-center justify-start gap-5 text-sm" ref={ref}>
@@ -52,7 +52,7 @@ export default function PaymentMethodContainer({
               <PaymentMethodCard
                 key={idx}
                 name={item.name}
-                price={orderState ? orderState.price.basic : 0}
+                price={product ? product.price.basic : 0}
               />
             ))}
           </div>

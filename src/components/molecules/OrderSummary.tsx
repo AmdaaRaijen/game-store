@@ -7,11 +7,11 @@ import { useOrderContext } from "@/context/OrderContext";
 import NumberFlow from "@number-flow/react";
 
 export default function OrderSummary() {
-  const { orderState } = useOrderContext();
+  const { product } = useOrderContext();
 
   return (
     <>
-      {orderState ? (
+      {product ? (
         <div>
           <div className=" bg-zinc-50 rounded-md p-5 border border-dashed border-zinc-500 shadow mb-3">
             <div className="flex items-center gap-4 mb-4">
@@ -25,8 +25,8 @@ export default function OrderSummary() {
                 />
               </div>
               <div>
-                <p className="font-medium">{orderState.game}</p>
-                <p>{orderState.name}</p>
+                <p className="font-medium">{product.game}</p>
+                <p>{product.name}</p>
               </div>
             </div>
             <div className="flex justify-between items-center">
@@ -34,7 +34,7 @@ export default function OrderSummary() {
               <div>
                 <span>Rp. </span>
                 <NumberFlow
-                  value={orderState.price.basic}
+                  value={product.price.basic}
                   format={{
                     style: "decimal",
                   }}

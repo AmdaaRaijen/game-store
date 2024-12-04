@@ -2,18 +2,49 @@
 import { ProductDataType } from "@/types/Product";
 import { createContext, ReactNode, useContext, useState } from "react";
 
+export interface AccountType {
+  [key: string]: string | null;
+}
+
+export interface PaymentType {
+  code: string;
+  name: string;
+}
+
 export interface OrderContextType {
-  orderState: ProductDataType | null;
-  setOrderState: (value: ProductDataType) => void;
+  product: ProductDataType | null;
+  setProduct: (value: ProductDataType) => void;
+  account: AccountType | null;
+  setAccount: (key: string, value: string) => void;
+  payment: PaymentType | null;
+  setPayment: (value: PaymentType) => void;
 }
 
 const OrderContext = createContext<OrderContextType | null>(null);
 
 export const OrderProvider = ({ children }: { children: ReactNode }) => {
-  const [orderState, setOrderState] = useState<ProductDataType | null>(null);
+  const [product, setProduct] = useState<ProductDataType | null>(null);
+  const [account, setAccountState] = useState<AccountType>({});
+  const [payment, setPayment] = useState<PaymentType | null>(null);
+
+  const setAccount = (key: string, value: string) => {
+    setAccountState((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
+  };
 
   return (
-    <OrderContext.Provider value={{ orderState, setOrderState }}>
+    <OrderContext.Provider
+      value={{
+        product,
+        setProduct,
+        account,
+        setAccount,
+        payment,
+        setPayment,
+      }}
+    >
       {children}
     </OrderContext.Provider>
   );
